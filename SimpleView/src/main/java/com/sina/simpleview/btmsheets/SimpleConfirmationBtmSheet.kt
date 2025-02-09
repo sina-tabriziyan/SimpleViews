@@ -13,7 +13,7 @@ import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
 enum class ConfirmButtonStyle { ROUNDED, NORMAL }
 
-class ConfirmationBottomSheet(
+class SimpleConfirmationBtmSheet(
     context: Context,
     message: String,
     positiveText: String,
