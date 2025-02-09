@@ -14,7 +14,7 @@ import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
 class ConfirmationBtmSheet(
     context: Context,
-    private val message: String,
+    message: String,
     positiveText: String?,
     negativeText: String?,
     private val style: ConfirmButtonStyle = ConfirmButtonStyle.NORMAL,

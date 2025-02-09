@@ -15,8 +15,6 @@ object SimpleView {
     fun ConfirmationBtmSheet(
         context: Context,
         message: String,
-        positiveText: String = context.getString(android.R.string.ok),
-        negativeText: String = context.getString(android.R.string.cancel),
         style: ConfirmButtonStyle = ConfirmButtonStyle.NORMAL,
         buttonColor: Int,
         onConfirm: () -> Unit
@@ -24,8 +22,6 @@ object SimpleView {
         return ConfirmationBtmSheet(
             context = context,
             message = message,
-            positiveText = positiveText,
-            negativeText = negativeText,
             style = style,
             buttonColor = buttonColor,
             onConfirm = onConfirm
