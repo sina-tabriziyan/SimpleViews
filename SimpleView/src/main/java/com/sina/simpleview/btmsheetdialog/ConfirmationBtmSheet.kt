@@ -14,9 +14,9 @@ import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
 class ConfirmationBtmSheet(
     context: Context,
-    message: String,
-    positiveText: String= context.getString(R.string.confirm),
-    negativeText: String= context.getString(R.string.cancel),
+    private val message: String,
+    positiveText: String?,
+    negativeText: String?,
     private val style: ConfirmButtonStyle = ConfirmButtonStyle.NORMAL,
     private val buttonColor: Int, // Accept color as an Int
     private val onConfirm: () -> Unit
@@ -24,12 +24,15 @@ class ConfirmationBtmSheet(
 
     private val binding: DialogConfirmationBinding = DialogConfirmationBinding.inflate(LayoutInflater.from(context))
 
+    private val defaultPositiveText = positiveText ?: context.getString(R.string.confirm)
+    private val defaultNegativeText = negativeText ?: context.getString(R.string.cancel)
+
     init {
         setContentView(binding.root)
 
         binding.txtMessage.text = message
-        binding.btnPositive.text = positiveText
-        binding.btnNegative.text = negativeText
+        binding.btnPositive.text = defaultPositiveText
+        binding.btnNegative.text = defaultNegativeText
 
         applyButtonStyles()
 
