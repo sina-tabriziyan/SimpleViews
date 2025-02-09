@@ -11,10 +11,15 @@ import com.sina.simpleview.library.R
 import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
 object SimpleView {
-    val Extensions = ViewExtensions
-    fun ConfirmationBtmSheet(
+    val ConfirmationBtmSheet = ConfirmationBtmSheetFactory
+}
+
+object ConfirmationBtmSheetFactory {
+    fun create(
         context: Context,
         message: String,
+        positiveText: String? = null,
+        negativeText: String? = null,
         style: ConfirmButtonStyle = ConfirmButtonStyle.NORMAL,
         buttonColor: Int,
         onConfirm: () -> Unit
@@ -22,9 +27,12 @@ object SimpleView {
         return ConfirmationBtmSheet(
             context = context,
             message = message,
+            positiveText = positiveText ?: context.getString(R.string.confirm),
+            negativeText = negativeText ?: context.getString(R.string.cancel),
             style = style,
             buttonColor = buttonColor,
             onConfirm = onConfirm
         )
     }
 }
+

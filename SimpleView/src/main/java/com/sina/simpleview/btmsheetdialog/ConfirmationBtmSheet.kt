@@ -8,50 +8,55 @@ package com.sina.simpleview.btmsheetdialog
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.sina.simpleview.library.R
 import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
+
 class ConfirmationBtmSheet(
     context: Context,
-    message: String,
+    private val message: String,
     positiveText: String?,
     negativeText: String?,
     private val style: ConfirmButtonStyle = ConfirmButtonStyle.NORMAL,
-    private val buttonColor: Int, // Accept color as an Int
+    private val buttonColor: Int,
     private val onConfirm: () -> Unit
 ) : BottomSheetDialog(context) {
 
-    private val binding: DialogConfirmationBinding = DialogConfirmationBinding.inflate(LayoutInflater.from(context))
+    private val view: View = LayoutInflater.from(context).inflate(R.layout.dialog_confirmation, null)
 
-    private val defaultPositiveText = positiveText ?: context.getString(R.string.confirm)
-    private val defaultNegativeText = negativeText ?: context.getString(R.string.cancel)
+    private val txtMessage: TextView = view.findViewById(R.id.txtMessage)
+    private val btnPositive: Button = view.findViewById(R.id.btnPositive)
+    private val btnNegative: Button = view.findViewById(R.id.btnNegative)
 
     init {
-        setContentView(binding.root)
+        setContentView(view)
 
-        binding.txtMessage.text = message
-        binding.btnPositive.text = defaultPositiveText
-        binding.btnNegative.text = defaultNegativeText
+        txtMessage.text = message
+        btnPositive.text = positiveText ?: context.getString(R.string.confirm)
+        btnNegative.text = negativeText ?: context.getString(R.string.cancel)
 
         applyButtonStyles()
 
-        binding.btnPositive.setOnClickListener {
+        btnPositive.setOnClickListener {
             onConfirm.invoke()
             dismiss()
         }
 
-        binding.btnNegative.setOnClickListener { dismiss() }
+        btnNegative.setOnClickListener { dismiss() }
     }
 
     private fun applyButtonStyles() {
         val backgroundDrawable = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            setColor(buttonColor) // Set color dynamically
-            cornerRadius = if (style == ConfirmButtonStyle.ROUNDED) 50f else 8f // Rounded or normal
+            setColor(buttonColor)
+            cornerRadius = if (style == ConfirmButtonStyle.ROUNDED) 50f else 8f
         }
 
-        binding.btnPositive.background = backgroundDrawable
-        binding.btnNegative.background = backgroundDrawable
+        btnPositive.background = backgroundDrawable
+        btnNegative.background = backgroundDrawable
     }
 }
