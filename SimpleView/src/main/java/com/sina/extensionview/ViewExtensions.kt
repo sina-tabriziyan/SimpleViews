@@ -8,7 +8,7 @@ package com.sina.extensionview
 import android.view.View
 
 
-object Extensions {
+object ViewExtensions {
     fun View.show() {
         this.visibility = View.VISIBLE
     }
