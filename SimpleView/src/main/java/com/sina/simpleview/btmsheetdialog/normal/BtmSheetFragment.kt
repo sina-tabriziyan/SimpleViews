@@ -12,9 +12,9 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class BtmSheetFragment<B : ViewBinding>(
-
-    private val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> B
+class BtmSheetFragment<B : ViewBinding>(
+    private val bindingClass: Class<B>,
+    private val setup: (B) -> Unit
 ) : BottomSheetDialogFragment() {
 
     private var _binding: B? = null
@@ -23,12 +23,27 @@ abstract class BtmSheetFragment<B : ViewBinding>(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = bindingInflater(inflater, container, false)
+        val method = bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+        _binding = method.invoke(null, inflater, container, false) as B
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setup(binding)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun <B : ViewBinding> newInstance(
+            bindingClass: Class<B>,
+            setup: (B) -> Unit
+        ): BtmSheetFragment<B> {
+            return BtmSheetFragment(bindingClass, setup)
+        }
     }
 }
