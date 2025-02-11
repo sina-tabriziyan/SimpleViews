@@ -14,16 +14,21 @@ import com.sina.simpleview.dialog.SimpleRadioGroupDialog
 object SimpleRadioGroupFactory {
     inline fun <reified T : Enum<T>, reified B : ViewBinding> create(
         context: Context,
-        noinline bindingInflater: (LayoutInflater) -> B,
         selectedItem: T? = null,
         noinline setup: (binding: B, dialog: Dialog, selectedItem: T) -> Unit
     ) {
+        val bindingInflater: (LayoutInflater) -> B = { inflater ->
+            B::class.java.getMethod("inflate", LayoutInflater::class.java)
+                .invoke(null, inflater) as B
+        }
+
         val dialog = SimpleRadioGroupDialog(
-            bindingInflater = bindingInflater,  // ✅ Pass bindingInflater correctly
+            bindingInflater = bindingInflater,  // ✅ Auto-Inflate ViewBinding
             enumValues = enumValues(),
             selectedItem = selectedItem,
             setup = setup
         )
-        dialog.show(context) // ✅ Ensure dialog is properly shown
+        dialog.show(context) // ✅ Automatically determine fragment manager
     }
 }
+

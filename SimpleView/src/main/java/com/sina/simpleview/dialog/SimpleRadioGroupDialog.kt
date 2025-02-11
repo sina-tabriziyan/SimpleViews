@@ -28,7 +28,7 @@ class SimpleRadioGroupDialog<T : Enum<T>, B : ViewBinding>(
         val dialog = Dialog(requireContext())
         val inflater = LayoutInflater.from(requireContext())
 
-        // ✅ Inflate binding dynamically
+        // ✅ Auto-Inflate ViewBinding
         _binding = bindingInflater(inflater)
         dialog.setContentView(binding!!.root)
 
