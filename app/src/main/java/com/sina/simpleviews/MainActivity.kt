@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
 //        }.show()
 
         binding.text.setOnClickListener {
-            SimpleView.BtmSheet.create<DialogConfirmationBinding>(supportFragmentManager) {
+            SimpleView.SimpleDialogFragment.create<DialogConfirmationBinding>(this) {binding,dialog->
 
-            }.show(supportFragmentManager, "CustomBottomSheet")
+            }
         }
 
     }

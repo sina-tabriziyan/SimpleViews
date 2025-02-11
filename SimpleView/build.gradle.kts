@@ -40,7 +40,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.sina-tabriziyan"
                     artifactId = "SimpleViews"
-                    version = "1.0.14"
+                    version = "1.0.15"
                 }
             }
         }
