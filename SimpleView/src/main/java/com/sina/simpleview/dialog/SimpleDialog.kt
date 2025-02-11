@@ -8,8 +8,6 @@ package com.sina.simpleview.dialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
 
-class SimpleDialogFragment<B : ViewBinding>(
+class SimpleDialog<B : ViewBinding>(
     private val bindingClass: Class<B>,
     private val setup: (B, DialogInterface) -> Unit
 ) : DialogFragment() {

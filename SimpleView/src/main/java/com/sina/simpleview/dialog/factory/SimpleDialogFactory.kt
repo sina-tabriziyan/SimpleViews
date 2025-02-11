@@ -3,19 +3,19 @@
  * Author: Sina Tabriziyan
  * @sina.tabriziyan@gmail.com
  */
-package com.sina.simpleview.dialog
+package com.sina.simpleview.dialog.factory
 
 import android.content.Context
 import android.content.DialogInterface
-import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
+import com.sina.simpleview.dialog.SimpleDialog
 
 object SimpleDialogFactory {
     inline fun <reified B : ViewBinding> create(
         context: Context,
         noinline setup: (B, DialogInterface) -> Unit
-    ): SimpleDialogFragment<B> {
-        return SimpleDialogFragment(B::class.java, setup).apply {
+    ): SimpleDialog<B> {
+        return SimpleDialog(B::class.java, setup).apply {
             show(context)
         }
     }
