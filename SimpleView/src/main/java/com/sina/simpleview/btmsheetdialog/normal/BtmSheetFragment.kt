@@ -12,7 +12,8 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class SimpleBtmSheetFragment<B : ViewBinding>(
+abstract class BtmSheetFragment<B : ViewBinding>(
+
     private val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> B
 ) : BottomSheetDialogFragment() {
 
