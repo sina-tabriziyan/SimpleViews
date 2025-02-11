@@ -3,7 +3,7 @@
  * Author: Sina Tabriziyan
  * @sina.tabriziyan@gmail.com
  */
-package com.sina.simpleview.btmsheetdialog
+package com.sina.simpleview.btmsheetdialog.confirmation
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
@@ -13,7 +13,6 @@ import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.sina.simpleview.library.R
-import com.sina.simpleview.library.databinding.DialogConfirmationBinding
 
 
 class ConfirmationBtmSheet(
