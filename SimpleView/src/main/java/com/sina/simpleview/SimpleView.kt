@@ -8,5 +8,6 @@ object SimpleView {
     val ConfirmationBtmSheet = ConfirmationBtmSheetFactory
     val SimpleBtmSheetFragment = BtmSheetFactory
     val SimpleDialogFragment = SimpleDialogFactory
+
 }
 
