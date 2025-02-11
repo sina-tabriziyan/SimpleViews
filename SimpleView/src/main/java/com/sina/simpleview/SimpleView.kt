@@ -9,20 +9,20 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.sina.simpleview.btmsheetdialog.confirmation.ConfirmButtonStyle
 import com.sina.simpleview.btmsheetdialog.confirmation.ConfirmationBtmSheet
-import com.sina.simpleview.btmsheetdialog.normal.SimpleBtmSheetFragment
+import com.sina.simpleview.btmsheetdialog.normal.BtmSheetFragment
 import com.sina.simpleview.library.R
 
 object SimpleView {
     val ConfirmationBtmSheet = ConfirmationBtmSheetFactory
-    val NormalBtmSheet = CustomBtmSheetFactory
+    val BtmSheet = BtmSheetFactory
 }
 
-object CustomBtmSheetFactory {
+object BtmSheetFactory {
     fun <B : ViewBinding> create(
         bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> B,
         setup: (B) -> Unit
-    ): SimpleBtmSheetFragment<B> {
-        val fragment = object : SimpleBtmSheetFragment<B>(bindingInflater) {
+    ): BtmSheetFragment<B> {
+        val fragment = object : BtmSheetFragment<B>(bindingInflater) {
             override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
                 super.onViewCreated(view, savedInstanceState)
                 setup(binding)
