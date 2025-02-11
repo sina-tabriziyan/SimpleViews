@@ -66,14 +66,5 @@ class SimpleDialogFragment<B : ViewBinding>(
         }
         show(fragmentManager, "CustomDialog")
     }
-
-    companion object {
-        fun <B : ViewBinding> newInstance(
-            bindingClass: Class<B>,
-            setup: (B, DialogInterface) -> Unit
-        ): SimpleDialogFragment<B> {
-            return SimpleDialogFragment(bindingClass, setup)
-        }
-    }
 }
 
