@@ -40,7 +40,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.sina-tabriziyan"
                     artifactId = "SimpleViews"
-                    version = "1.0.22"
+                    version = "1.0.23"
                 }
             }
         }
@@ -55,4 +55,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("org.jsoup:jsoup:1.17.2")
 }
